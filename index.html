@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love 💖</title>
+
+<style>
+:root{
+  --pink:#ff4d6d;
+  --soft:#fff0f4;
+  --dark:#444;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  height:100vh;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* MAIN CARD */
+.card{
+  width:90%;
+  max-width:520px;
+  background:white;
+  border-radius:28px;
+  padding:35px 30px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+  position:relative;
+  z-index:5;
+}
+
+/* PAGES */
+.page{
+  display:none;
+  animation:fade .8s ease;
+}
+.page.active{display:block}
+
+h1,h2{color:var(--pink);margin-bottom:10px}
+p{color:var(--dark);font-size:16px;line-height:1.6}
+
+/* BUTTON */
+button{
+  margin-top:25px;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:var(--pink);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+button:hover{opacity:.9}
+
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:15px;
+}
+.gallery img{
+  width:100%;
+  height:100px;
+  border-radius:14px;
+  object-fit:cover;
+}
+
+/* DOTS */
+.dots{
+  display:flex;
+  justify-content:center;
+  margin-top:20px;
+}
+.dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:#ffd1dc;
+  margin:0 4px;
+}
+.dot.active{background:var(--pink)}
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  top:-20px;
+  font-size:18px;
+  animation:fall linear forwards;
+  pointer-events:none;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh);opacity:0}
+}
+@keyframes fade{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:none}
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="lovee.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <h1>💌 A Letter For You</h1>
+  <p>Someone made this just to tell you how special you are.</p>
+  <button onclick="next()">Open</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <h2>My Love ❤️</h2>
+  <p>
+Hi mylovee happy valentines day I just want to thank you for all the love you have shown me I appreciate all your efforts and hard work, how much you loved me, and I also want to apologize to you because sometimes I wasn't a good boyfriend to you, sometimes I hurt you with the things I did but even so, I love you verry verry verry muchhhh muchhh, you just don't notice it, but I'm doing my best to be a good boyfriend to you. I LOVE YOU FOREVER MYLOVEE MY DARLING MU FUTURE WIFIE ILOVEYOU WITH ALL MY HEART 😚🤍
+  </p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <h2>Our Memories 📸</h2>
+  <div class="gallery">
+    <img src="sweet.jpg">
+    <img src="sweetie.jpg">
+    <img src="sweetie1.jpg">
+  </div>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <h2>What I Love About You 💕</h2>
+  <p>
+    Your smile.<br>
+    Your kindness.<br>
+    The way you understand me Ahmmm what I love about youu issss your eyes your forehead your lips your hair your skin your voice your smell your eyebrows I like everything about you, you know that when I see you in person, I just want to stare at you all the day  because your eyes are so beautiful. likeee ahhh so pretty pretty muchh muchh🤭😍😍
+  </p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <h2>My Promise 💖</h2>
+  <p>
+    Bisaya nalang ni dria HAHAAHAA ahmm ang ako lang e promise nmo kanang, kanang imong mga hinala² nmo nako na nakoy baji mamaji ko ako na e promise na dli nako na mabuhat nmo hantud² og ako e promise nmo na ikaw ra ako lab hantud² kay ikaw ra ako gusto hantud² maka uban kay ig mag usa nata ako tika himoon og princes napagsilbihan sa tanan nmo gusto aw nya promise nako na ikaw ra ako pakasalan ig abot sa panahon aw iloveyouuuu myloveeee
+  </p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <h2>Our Future ✨</h2>
+  <p>
+Atong future love is mangadto tas Switzerland kauban ka🫶 or atong anak puhon aw AHAHAHAH gusto ko ikaw ako mapangasawa puhon nya og makasal nata ako e promise sako kaugalingon na dli tika pasakitan aw ipa priso kos ako ate HAHAHAHAH djdko mag inom² para dli mada og bisyo² ikaw ra ako pakasalan lovee and ikaw rapd ako anakan aw HAHAHAHAHA basta love gusto nko future ikaw at ikaw ra🫶🫶🤍
+  </p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+  <h1>I Love You ❤️</h1>
+  <p>Happy Valentine’s Day, my bby my forever🫶💝</p>
+</div>
+
+<div class="dots" id="dots"></div>
+
+</div>
+
+<script>
+const pages=document.querySelectorAll('.page');
+const dotsContainer=document.getElementById('dots');
+const music=document.getElementById('music');
+let index=0;
+
+/* DOTS */
+pages.forEach((_,i)=>{
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' active':'');
+  dotsContainer.appendChild(d);
+});
+const dots=document.querySelectorAll('.dot');
+
+function next(){
+  if(index===0){music.volume=.5;music.play();}
+  pages[index].classList.remove('active');
+  dots[index].classList.remove('active');
+  index++;
+  if(index<pages.length){
+    pages[index].classList.add('active');
+    dots[index].classList.add('active');
+  }
+}
+
+/* HEARTS */
+function heart(){
+  const h=document.createElement('div');
+  h.className='heart';
+  h.innerHTML='❤️';
+  h.style.left=Math.random()*100+'vw';
+  h.style.animationDuration=3+Math.random()*3+'s';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}
+setInterval(heart,400);
+</script>
+
+</body>
+</html>
